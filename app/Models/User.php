@@ -40,4 +40,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function event()
+    {
+        return $this->hasOne(Event::class, 'user_id', 'id');
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'user_id', 'id');
+    }
+
+    public function portolios()
+    {
+        return $this->hasMany(Portfolio::class, 'user_id', 'id');
+    }
+
+    public function proposal()
+    {
+        return $this->hasOne(Portfolio::class, 'user_id', 'id');
+    }
+
+    public function proposals()
+    {
+        return $this->hasMany(Portfolio::class, 'user_id', 'id');
+    }
+    
 }

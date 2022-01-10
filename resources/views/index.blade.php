@@ -1,3 +1,7 @@
+@auth
+{{'login'}}
+@else
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -38,11 +42,11 @@
             <div class="container">
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                        @auth
+                        {{-- @auth
                         <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, {{Auth::user()->name}}</a></li>
-                        @else
+                        @else --}}
                         <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, Guest</a></li>
-                        @endauth
+                        {{-- @endauth --}}
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -79,11 +83,11 @@
                 <!-- Navigation Menu-->   
                 <ul class="navigation-menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/event_seeker">Event Seeker</a></li>
-                    <li><a href="/event_worker">Event Worker</a></li>
+                    <li><a href="/login">Event Seeker</a></li>
+                    <li><a href="/login">Event Worker</a></li>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/signup">Signup</a></li>
-                    <li><a href="/post_event">Post Event</a></li>
+                    <li><a href="/login">Post Event</a></li>
 
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
@@ -624,4 +628,4 @@
 </body>
 </html>
 
-    
+@endauth

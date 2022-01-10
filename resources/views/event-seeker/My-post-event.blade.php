@@ -4,7 +4,7 @@
  @endsection
 @section('content')
 @include('includes.header')
-    
+    {{-- {{dd($events)}} --}}
     <!-- Start home -->
     <section class="bg-half page-next-level" style="background: url('/assets/images/post-event.jpeg') center center;"> 
         <div class="bg-overlay"></div>
@@ -35,22 +35,8 @@
                     </div>
                 </div>
             </div>
-           {{-- <?php
-                                                        include"connection.php";
-                                                        $user=implode($_SESSION["User"]);
-                                                        $email=$_SESSION["email"];
-                                                        $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email`='$email'") or die("Error: " . mysqli_error($conn));                        
-                                                        $row=mysqli_fetch_array($query); 
-                                                        $id=$row["id"];
-                                                        $sql= "SELECT * FROM `postevent`  WHERE `u_id`=$id ORDER BY `id` DESC";
-                                                        $result=mysqli_query($conn,$sql);
-
-                                                        if ($result->num_rows > 0) {
-                                                        
-                                                        while($rows=mysqli_fetch_array($result))
-                                                        { $id=$rows['id'];
-
-                                                  echo'
+          
+             @foreach($events as $event)
             <div class="row">
                 <div class="col-12">
                     <div class="tab-content mt-2" id="pills-tabContent">
@@ -68,31 +54,29 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-2">
                                                     <div class="mo-mb-2">
-                                                        <img src="images/eventpostlogo.PNG" alt="" class="img-fluid mx-auto d-block">
+                                                        <img src="/assets/images/eventpostlogo.PNG" width="200px" alt="" class="img-fluid mx-auto d-block">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">'; echo ucwords($rows['event_title']); echo'</a></h5>
-                                                        <p class="text-muted mb-0">Posted by: ';
-                                                                                                                 echo  ucwords($rows['u_name']);
-                                                                                                                       echo '</p>
-                                                        <p><span class="text-dark">posted on:</span>'; echo $rows['currentdate']." time:".$rows['currenttime']; echo'</p>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$event->title}}</a></h5>
+                                                        <p class="text-muted mb-0">Posted by:{{$event->user->name}}</p>
+                                                        <p><span class="text-dark">posted on:</span>{{$event->created_at->format('Y-m-d')}} <br>time: {{$event->created_at->format('H:i:s')}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>'; echo ucwords($rows['location'].", ".$rows['city']); echo '</p>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{$event->location}}, {{$event->city}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <p class="text-muted mb-0 mo-mb-2">Budget <span class="text-primary">Rs</span>'; echo $rows['budgetmin']."-".$rows['budgetmax']; echo '</p>
+                                                        <p class="text-muted mb-0 mo-mb-2">Budget <span class="text-primary">Rs</span>{{$event->budget_min. "-".$event->budget_max }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <p class="text-muted mb-0">'; echo $rows['event_date']; echo '</p>
+                                                        <p class="text-muted mb-0">{{$event->event_date}}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,9 +84,7 @@
                                         <div class="p-3 bg-light " >
                                             <div class="row justify-content-center ">
                                                 <div class="col-md-2">
-                                                    <div>';
-                                                         
-                                                        echo " <a href='My-post-event.php?del_id=$rows[id]'"; echo' class="text-primary">Remove Post <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    <div> <a href='/event-seeker/delete/{{$event->id}}' class="text-primary">Remove Post <i class="mdi mdi-chevron-double-right"></i></a>
                                                     </div>
                                                 </div>
                                                 
@@ -122,8 +104,9 @@
                             <!-- end row -->
                         </div>
                     </div>
-                </div>';?>
-                                    
+                </div>
+                @endforeach
+                {{--            
 <?php
 if (isset($_GET['del_id'])){
     $del_sql="DELETE FROM `postevent` WHERE `id`='$_GET[del_id]'";

@@ -58,7 +58,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative">
                                                     <label>Enter a Username <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="user_name" placeholder="username" required="">
+                                                    <input type="text" class="form-control" name="username" placeholder="username" required="">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

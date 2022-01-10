@@ -18,7 +18,7 @@ class AuthController extends Controller
                 'password' => 'required',
             ]);
             if (Auth::attempt($request->only('email', 'password'))) {
-                return redirect()->intended('/')
+                return redirect()->intended('/home')
                     ->withSuccess('Signed in');
             }
             return redirect("login")->withErrors('Login details are not valid');
@@ -29,7 +29,7 @@ class AuthController extends Controller
         {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'user_name' => 'required|string|unique:users',
+                'username' => 'required|string|unique:users',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
                 'cpassword' => 'required|string|min:8',
@@ -52,7 +52,7 @@ class AuthController extends Controller
             }
             $user = new User();
             $user->name = $request->name;
-            $user->user_name = $request->user_name;
+            $user->username = $request->username;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->gender = $request->gender;
@@ -61,7 +61,7 @@ class AuthController extends Controller
 
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials)) {
-                return redirect()->intended('/')
+                return redirect()->intended('/home')
                     ->withSuccess('Signed in');
             }
     

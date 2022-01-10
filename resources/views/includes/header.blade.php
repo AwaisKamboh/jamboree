@@ -31,7 +31,7 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-                <a href="home.php" class="logo">
+                <a href="/home" class="logo">
                     <img src="/assets/images/logo9.png" alt="" class="logo-light" width="100px" />
                     <img src="/assets/images/logo10.png" alt="" class="logo-dark" width="100px" />
                 </a>
@@ -55,11 +55,11 @@
             <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="/home">Home</a></li>
                         <li class="has-submenu">
                             <a href="javascript:void(0)">My Events</a><span class="menu-arrow"></span>
                             <ul class="submenu">
-                                <li><a href="/posted_event">My Posted Events</a></li>
+                                <li><a href="/event-seeker/posted_event">My Posted Events</a></li>
                                 <li><a href="active_event">My Active Events</a></li>
                                  <li><a href="/my_bid">Bids On My Events</a></li>
                              

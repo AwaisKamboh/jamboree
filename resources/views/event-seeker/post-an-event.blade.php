@@ -5,78 +5,6 @@
 @section('content')
 <!-- Loader -->
 @include('includes.header')
-    <!-- Navigation Bar-->
-
-            <!-- Tagline End -->
-    
-            <!-- Menu Start -->
-            <div class="container">
-                <!-- Logo container-->
-                <div>
-                    <a href="/" class="logo">
-                        <img src="/assets/images/logo9.png" alt="" class="logo-light" width="100px" />
-                    <img src="/assets/images/logo10.png" alt="" class="logo-dark" width="100px" />
-                    </a>
-                </div>                 
-                <!--end login button-->
-                <!-- End Logo container-->
-                <div class="menu-extras">
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
-                </div>
-        
-                <div id="navigation">
-                        <!-- Navigation Menu-->   
-                        <ul class="navigation-menu">
-                            <li><a href="/">Home</a></li>
-                            <li class="has-submenu">
-                                <a href="javascript:void(0)">My Events</a><span class="menu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="My-post-event.php">My Posted Events</a></li>
-                                    <li><a href="my-active-event.php">My Active Events</a></li>
-                                    <li><a href="bid.php">Bids On My Events</a></li>
-                                 
-                                </ul>
-                            </li>
-            
-                            <li class="has-submenu">
-                                <a href="javascript:void(0)">Payments</a><span class="menu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="payment.php">Pay Event Workers</a></li>
-                                 
-                                </ul>
-                            </li>
-                            <li class="has-submenu">
-                                    <a href="javascript:void(0)">Account</a><span class="menu-arrow"></span>
-                                <ul class="submenu">
-                                        <li class="has-submenu"><a href="javascript:void(0)"> Settings</a><span class="submenu-arrow"></span>
-                                            <ul class="submenu">
-                                                <li><a href="profile.php">Profile</a></li>
-                                                <li><a href="chat.php">Messages</a></li>
-                                            </ul>  
-                                        </li>
-                                        <li><a href="logout.php">Logout</a></li>
-                                     
-                                </ul>
-                            </li>
-                            <li>
-                            </li>
-                        </ul><!--end navigation menu-->
-                    </div><!--end navigation-->
-                </div><!--end container-->
-                <!--end end-->
-            </header><!--end header-->
-            <!-- Navbar End -->
-    
     <!-- Start home -->
     <section class="bg-half page-next-level" style="background: url('/assets/images/post-events.jpg') center center;"> 
         <div class="bg-overlay"></div>
@@ -107,55 +35,14 @@
                         <div class="custom-form">
                             <div id="message3"></div>
                             
-                              {{-- <?php
-                                    
-                                    include_once("connection.php");
-                            date_default_timezone_set('Asia/Karachi');
-                            
-                                    if(isset($_GET['postevent']))
-                                        {    
-                                        $user=implode($_SESSION["User"]);
-                                        $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `username`='$user'") or die("Error: " . mysqli_error($conn));                        
-                                        $row=mysqli_fetch_array($query); 
-                                        $id=$row["id"];
-                                        $event_title=$_GET['event_title'];
-                                        $event_type=$_GET['event_type'];
-                                        $city=$_GET['city'];
-                                        $location=$_GET['location'];
-                                        $budgetmin=$_GET['budgetmin'];
-                                        $budgetmax=$_GET['budgetmax'];
-                                        $event_date=$_GET['date'];
-                                        $event_descrip=$_GET['description'];
-                                        $currentdate= date("Y-m-d");
-                                        $currenttime=date("h:i:sa");
-                                        
-                                      $sql="INSERT INTO `postevent`(`u_id`, `u_name`, `event_title`, `event_type`, `city`, `location`, `budgetmin`, `budgetmax`, `event_date`, `event_descrip`,`currentdate`, `currenttime`) VALUES ('$id','$user','$event_title',' $event_type','$city',' $location','$budgetmin','$budgetmax','$event_date','$event_descrip','$currentdate','$currenttime')";
-                                        if($conn->query($sql)===TRUE){
-                                             echo "<script>
-                                            location.href='post-an-event.php';
-                                            alert('Event posted');
-                                            </script>";   
-                                             }
-                                        else
-                                        {
-                                            echo "<script>
-                                            location.href='post-an-event.php';
-                                            alert('Event not posted');
-                                            </script>"; 
-                                        }
-
-                                    }
-                                     ?> --}}
-                            
-                            
-                            
-                            <form method="GET" action="#" name="contact-form" id="contact-form3">
+                            <form method="POST" action="#" name="contact-form" id="contact-form3">
+                                @csrf
                                 <h4 class="text-dark mb-3">Post a New Event :</h4>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group app-label mt-2">
                                             <label class="text-muted">Event Title</label>
-                                            <input id="company-name" type="text" class="form-control resume" placeholder="" name="event_title" required>
+                                            <input id="company-name" type="text" class="form-control resume" placeholder="" name="title" required>
                                         </div>
                                     </div>
                                 </div>
@@ -165,13 +52,13 @@
                                         <div class="form-group app-label mt-2">
                                             <label class="text-muted">Event Type</label>
                                             <div class="form-button">
-                                                <select class="nice-select rounded" name="event_type" required>
-                                                    <option data-display="Job Type">Event Type</option>
-                                                    <option value="anniversary">Anniversary </option>
-                                                    <option value="birthday">Birthday</option>
-                                                    <option value="custom">Custom</option>
-                                                    <option value="marriage">Marriage</option>
-                                                </select>
+                                                <select  class="form-control" id="exampleFormControlSelect2" name="type">
+                                                    <option selected value="">Select</option>
+                                                    <option value="Anniversary">anniversary</option>
+                                                    <option value="Birthday">birthday</option>
+                                                    <option value="Marriage" >custom</option>
+                                                    <option value="Custom">marriage</option>
+                                                  </select>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +102,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group app-label mt-2">
                                             <label class="text-muted">Event Date</label>
-                                            <input type="date" class="form-control resume" placeholder="d/m/y" name="date" required>
+                                            <input type="date" class="form-control resume" placeholder="d/m/y" name="event_date" required>
                                         </div>
                                     </div>
                                 </div>

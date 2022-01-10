@@ -1,3 +1,4 @@
+@auth
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -9,15 +10,15 @@
     <meta name="keywords" content="" />
     <meta name="author" content="Class Project" />
 
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/fontawesome.css" />
-    <link rel="stylesheet" type="text/css" href="css/selectize.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css" />
-    <link rel="stylesheet" href="css/owl.theme.css" />
-    <link rel="stylesheet" href="css/owl.transitions.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/selectize.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/assets/css/owl.theme.css" />
+    <link rel="stylesheet" href="/assets/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
 
 </head>
 
@@ -40,15 +41,7 @@
             <div class="container">
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, <?php
-        session_start();
-       if($_SESSION["User"]==true){
-        echo implode($_SESSION["User"]);
-             }
-        else{
-            header('location:login.php');
-        }
-        ?></a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, {{Auth::user()->name}}</a></li></a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -61,8 +54,8 @@
             <!-- Logo container-->
             <div>
                 <a href="home.php" class="logo">
-                    <img src="images/logo9.png" alt="" class="logo-light" width="100px" />
-                    <img src="images/logo10.png" alt="" class="logo-dark" width="100px" />
+                    <img src="/assets/images/logo9.png" alt="" class="logo-light" width="100px" />
+                    <img src="/assets/images/logo10.png" alt="" class="logo-dark" width="100px" />
                 </a>
             </div>                 
             <div class="buy-button">
@@ -86,19 +79,19 @@
             <div id="navigation">
                 <!-- Navigation Menu-->   
                 <ul class="navigation-menu">
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="event-seeker-homepage.php">Event Seeker</a></li>
-                    <li><a href="event-workers-homepage.php">Event Worker</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/event-seeker">Event Seeker</a></li>
+                    <li><a href="/event_worker">Event Worker</a></li>
                     <li class="has-submenu">
                                 <a href="javascript:void(0)">Account</a><span class="menu-arrow"></span>
                             <ul class="submenu">
                                     <li class="has-submenu"><a href="javascript:void(0)"> Settings</a><span class="submenu-arrow"></span>
                                         <ul class="submenu">
-                                            <li><a href="profile.php">Profile</a></li>
-                                            <li><a href="chat.php">Messages</a></li>
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="/chat">Messages</a></li>
                                         </ul>  
                                     </li>
-                                    <li><a href="logout.php">Logout</a></li>
+                                    <li><a href="/logout">Logout</a></li>
                                  
                             </ul>
                         </li>
@@ -111,7 +104,7 @@
     <!-- Navbar End -->
 
     <!-- Start Home -->
-    <section class="bg-home" style="background: url('images/event-plans.png') center center;">
+    <section class="bg-home" style="background: url('/assets/images/event-plans.png') center center;">
         <div class="bg-overlay"></div>
         <div class="home-center">
             <div class="home-desc-center">
@@ -222,7 +215,7 @@
                     <div class="col-md-4 mt-4 pt-2">
                         <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
                             <div class="how-it-work-img position-relative rounded-pill mb-3">
-                                <img src="images/how-it-work/img-3.png" alt="" class="mx-auto d-block" height="50">
+                                <img src="/assets/images/how-it-work/img-3.png" alt="" class="mx-auto d-block" height="50">
                             </div>
                             <div>
                                 <h5>Get Work Done</h5>
@@ -323,23 +316,24 @@
     <a href="#" class="back-to-top rounded text-center" id="back-to-top"> 
         <i class="mdi mdi-chevron-up d-block"> </i> 
     </a>
-    <!-- Back to top -->
-
-    <!-- javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/plugins.js"></script>
-
-    <!-- selectize js -->
-    <script src="js/selectize.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/counter.int.js"></script>
-
-    <script src="js/app.js"></script>
-    <script src="js/home.js"></script>
+        <!-- Back to top -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/jquery.easing.min.js"></script>
+        <script src="/assets/js/plugins.js"></script>
+        
+        <!-- selectize js -->
+        <script src="/assets/js/selectize.min.js"></script>
+        <script src="/assets/js/jquery.nice-select.min.js"></script>
+        
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/counter.int.js"></script>
+        
+        <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/home.js"></script>
 
 </body>
 </html>
+@else 
+{{"not login"}}
+@endauth

@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventSeekerController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,22 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
-
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/event_seeker', function () {
-    return view('event-seeker.event-seeker-homepage');
+Route::group(['prefix'=>'event-seeker'],function(){
+    Route::view('/','event-seeker.event-seeker-homepage');
+    Route::get('/posted_event',[EventSeekerController::class,'my_events']);
+    Route::get('/post-event',[EventSeekerController::class,'create']);
+    Route::post('/post-event',[EventSeekerController::class,'store']);
+    Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
 });
+
+
 
 Route::get('/event_worker', function () {
     return view('event-worker.event-workers-homepage');
@@ -37,9 +46,9 @@ Route::get('/post_event', function () {
     return view('event-seeker.post-an-event');
 });
 
-Route::get('/posted_event', function () {
-    return view('event-seeker.my-post-event');
-});
+// Route::get('/posted_event', function () {
+//     return view('event-seeker.my-post-event');
+// });
 
 Route::get('/active_event', function () {
     return view('event-seeker.my-active-event');
@@ -54,6 +63,13 @@ Route::get('/payments', function () {
 
 Route::get('/user_profile', function () {
     return view('usersprofile');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/chat', function () {
+    return view('chat');
 });
 
 // Route::get('bid', function () {
