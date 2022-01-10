@@ -11,6 +11,16 @@ class Event extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function hireds()
+    {
+        return $this->hasMany(Hired::class);
+    }
+
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class);
     }
 }

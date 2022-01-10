@@ -59,7 +59,7 @@
                 </a>
             </div>                 
             <div class="buy-button">
-                <a href="post-an-event.php" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Post an Event</a>
+                <a href="/event-seeker/post-event" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Post an Event</a>
             </div><!--end login button-->
             <!-- End Logo container-->
             <div class="menu-extras">

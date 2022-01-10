@@ -17,7 +17,7 @@
                                 <h6 class="small-title text-uppercase text-light mb-3">Create events & hire professionals for management.</h6>
                                 <h1 class="heading font-weight-bold mb-4">Get your Event Done.</h1>
                                 <center><div class="buy-button">
-                <a href="/post_event" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Post an Event</a>
+                <a href="/event-seeker/post-event" class="btn btn-primary"><i class="mdi mdi-cloud-upload"></i> Post an Event</a>
             </div></center>
                             </div>
                         </div>

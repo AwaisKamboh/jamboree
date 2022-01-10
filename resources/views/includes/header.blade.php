@@ -59,8 +59,8 @@
                         <li class="has-submenu">
                             <a href="javascript:void(0)">My Events</a><span class="menu-arrow"></span>
                             <ul class="submenu">
-                                <li><a href="/event-seeker/posted_event">My Posted Events</a></li>
-                                <li><a href="active_event">My Active Events</a></li>
+                                <li><a href="/event-seeker/posted-event">My Posted Events</a></li>
+                                <li><a href="/event-seeker/active-event">My Active Events</a></li>
                                  <li><a href="/my_bid">Bids On My Events</a></li>
                              
                             </ul>
