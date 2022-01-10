@@ -1,8 +1,26 @@
- @extends('main.layout')
- @section('title')
-     {{"Jamboree | Home"}}
- @endsection
- @section('content')
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Class Project" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/selectize.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/assets/css/owl.theme.css" />
+    <link rel="stylesheet" href="/assets/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+</head>
+
+<body>
  <div id="preloader">
         <div id="status">
             <div class="spinner">
@@ -11,8 +29,8 @@
             </div>
         </div>
     </div>
-    <!-- Loader -->
-
+    <!-- Loader -->  
+  
     <!-- Navigation Bar-->
     <header id="topnav" class="defaultscroll scroll-active">
         <!-- Tagline STart -->
@@ -20,7 +38,11 @@
             <div class="container">
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
+                        @auth
+                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, {{Auth::user()->name}}</a></li>
+                        @else
                         <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Welcome, Guest</a></li>
+                        @endauth
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -585,5 +607,21 @@
         <i class="mdi mdi-chevron-up d-block"> </i> 
     </a>
     <!-- Back to top -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.easing.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    
+    <!-- selectize js -->
+    <script src="/assets/js/selectize.min.js"></script>
+    <script src="/assets/js/jquery.nice-select.min.js"></script>
+    
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/counter.int.js"></script>
+    
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/home.js"></script>
+</body>
+</html>
 
-    @endsection
+    

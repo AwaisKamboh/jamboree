@@ -1,3 +1,4 @@
+{{-- @if (Auth::check()) --}}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -41,6 +42,12 @@
     <script src="/assets/js/home.js"></script>
 </body>
 </html>
+{{-- @else
+@php
+    header('Location: ' . URL::to('/login'), true, 302);
+    exit();
+@endphp
+@endif --}}
 
 
 

@@ -15,19 +15,12 @@
     <div class="tagline">
         <div class="container">
             <div class="float-right">
+                @auth
                 <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                    <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>
-                    {{-- <?php
-    session_start();
-   if($_SESSION["User"]==true){
-    echo implode($_SESSION["User"]);
-         }
-    else{
-        header('location:login.php');
-    }
-    ?> --}}
-   Hamza , as Event Worker!</a></li>
+                    <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>  
+                        {{Auth::user()->name}} , as Event Worker!</a></li>
                 </ul>
+                @endauth
             </div>
             <div class="clearfix"></div>
         </div>
@@ -86,7 +79,7 @@
                                     <li><a href="chat.php">Messages</a></li>
                                 </ul>  
                             </li>
-                            <li><a href="logout.php">Logout</a></li>
+                            <li><a href="/logout">Logout</a></li>
                          
                     </ul>
                 </li>

@@ -15,7 +15,7 @@
                         <ul class="page-next d-inline-block mb-0">
                             <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
                             <li>
-                                <span class="text-uppercase text-white font-weight-bold">Post an event</span> 
+                                <span class="text-uppercase text-white font-weight-bold">Payments</span> 
                             </li> 
                         </ul>
                     </div>

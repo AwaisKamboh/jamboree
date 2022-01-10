@@ -1,46 +1,26 @@
-{{-- <?php
-session_start();
-include_once("connection.php");
-if(isset($_GET['submit']))
-{
-    $email=$_GET['email'];
-    $sql= "SELECT `email` FROM users WHERE `email`='$email'";
-    $result=$conn->query($sql);
-    if($result->num_rows>0)
-    {echo "<script>
-location.href='signup.php';
-alert('email already exist');
-</script>";   
-    }
-    else{    
-    $fname=$_GET['fname'];
-    $lname=$_GET['lname'];
-    $email=$_GET['email'];
-    $password=$_GET['password'];
-    $username=$_GET['username'];
-    $gender=$_GET['gender'];
-    $address=$_GET['address'];
-  $sql="INSERT INTO `users`(`fname`,`lname`, `email`, `password`,`username`, `gender`, `address`) VALUES  ('$fname','$lname','$email','$password','$username','$gender','$address')";
-     if($conn->query($sql)===TRUE){
-          $_SESSION["User"]=$username;
-          $_SESSION["email"]=$femail;
-         echo "<script>
-        location.href='home.php';
-        </script>";   
-         }
-    else
-    {
-        echo "fail";
-    }
-    
-}
-}
- ?> --}}
-@extends('main.layout')
-@section('title')
-     {{"Jamboree | Signup"}}
- @endsection
-@section('content')
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Class Project" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/selectize.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/assets/css/owl.theme.css" />
+    <link rel="stylesheet" href="/assets/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+</head>
+
+<body>
         <!-- Loader -->
         <div id="preloader">
             <div id="status">
@@ -67,18 +47,18 @@ alert('email already exist');
                                     <div class="text-center">
                                         <h4 class="mb-4">Signup</h4>  
                                     </div>
-                                    <form class="login-form" action="signup.php" method="GET">
+                                    <form class="login-form" action="/register" method="GET">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative">                                               
-                                                    <label>First name <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" placeholder="First Name" name="fname" required="">
+                                                    <label>Full Name <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="First Name" name="name" required="">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group position-relative">                                                
-                                                    <label>Last name <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" placeholder="Last Name" name="lname" required="">
+                                                <div class="form-group position-relative">
+                                                    <label>Enter a Username <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="user_name" placeholder="username" required="">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -96,12 +76,9 @@ alert('email already exist');
                                             <div class="col-md-12">
                                                 <div class="form-group position-relative">
                                                     <label>Confirm Password <span class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control" placeholder="Confirm Password" required="">
+                                                    <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" required="">
                                                 </div>
-                                                <div class="form-group position-relative">
-                                                    <label>Enter a Username <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="username" placeholder="username" required="">
-                                                </div>
+                                                
                                             </div>
                                                  <div class="col-md-12">
                                                 <div class="form-group position-relative">
@@ -156,4 +133,19 @@ alert('email already exist');
             </div>
         </section><!--end section-->
         <!-- Hero End -->
-        @endsection
+        <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.easing.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    
+    <!-- selectize js -->
+    <script src="/assets/js/selectize.min.js"></script>
+    <script src="/assets/js/jquery.nice-select.min.js"></script>
+    
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/counter.int.js"></script>
+    
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/home.js"></script>
+</body>
+</html>

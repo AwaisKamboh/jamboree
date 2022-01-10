@@ -4,39 +4,9 @@
 @endsection
 @section('content')
 <!-- Loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Loader -->
-
+@include('includes.header')
     <!-- Navigation Bar-->
-    <header id="topnav" class="defaultscroll scroll-active">
-            <!-- Tagline STart -->
-            <div class="tagline">
-                <div class="container">
-                    <div class="float-right">
-                        <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                            <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>
-                            {{-- <?php
-        session_start();
-       if($_SESSION["User"]==true){
-        echo implode($_SESSION["User"]);
-             }
-        else{
-            header('location:login.php');
-        }
-        ?>  --}}
-        as Event Seeker!</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
+
             <!-- Tagline End -->
     
             <!-- Menu Start -->
