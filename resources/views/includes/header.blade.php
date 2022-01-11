@@ -60,7 +60,11 @@
                             <a href="javascript:void(0)">My Events</a><span class="menu-arrow"></span>
                             <ul class="submenu">
                                 <li><a href="/event-seeker/posted-event">My Posted Events</a></li>
+<<<<<<< HEAD
                                 <li><a href="active_event">My Active Events</a></li>
+=======
+                                <li><a href="/event-seeker/active-event">My Active Events</a></li>
+>>>>>>> 8b9dab37e5316dcc16ebd3806484aa6e2cccbcf3
                                  <li><a href="/my_bid">Bids On My Events</a></li>
                              
                             </ul>

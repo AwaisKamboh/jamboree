@@ -35,7 +35,7 @@
                         <div class="custom-form">
                             <div id="message3"></div>
                             
-                            <form method="POST" action="#" name="contact-form" id="contact-form3">
+                            <form method="POST" action="/event-seeker/post-event" name="contact-form" id="contact-form3">
                                 @csrf
                                 <h4 class="text-dark mb-3">Post a New Event :</h4>
                                 <div class="row">

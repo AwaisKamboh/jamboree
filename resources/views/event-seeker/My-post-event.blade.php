@@ -4,7 +4,6 @@
  @endsection
 @section('content')
 @include('includes.header')
-    {{-- {{dd($events)}} --}}
     <!-- Start home -->
     <section class="bg-half page-next-level" style="background: url('/assets/images/post-event.jpeg') center center;"> 
         <div class="bg-overlay"></div>
@@ -91,9 +90,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                                
-
                                 </div>
                             </div>
                         </div>
@@ -106,22 +102,7 @@
                     </div>
                 </div>
                 @endforeach
-                {{--            
-<?php
-if (isset($_GET['del_id'])){
-    $del_sql="DELETE FROM `postevent` WHERE `id`='$_GET[del_id]'";
-    if(mysqli_query($conn, $del_sql)) {
-         ?>
-<script>window.location="My-post-event.php";</script>
-<?php
-}
-else {
-                echo "fail";
-            }
-                                                        }}}//end of if
-                                                        
-            ?> --}}
-           
+         
             </div>
             <!-- end row -->
 

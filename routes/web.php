@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventSeekerController;
 use App\Http\Controllers\EventWorkerController;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('index');
 });
@@ -29,12 +31,14 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::group(['prefix'=>'event-seeker'],function(){
-    Route::view('/','event-seeker.event-seeker-homepage');
-    Route::get('/posted_event',[EventSeekerController::class,'my_events']);
-    Route::get('/post-event',[EventSeekerController::class,'create']);
-    Route::post('/post-event',[EventSeekerController::class,'store']);
-    Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
+Route::group(['prefix' => 'event-seeker'], function () {
+    Route::view('/', 'event-seeker.event-seeker-homepage');
+    Route::view('post-event', 'event-seeker.post-an-event');
+    Route::get('/posted-event', [EventSeekerController::class, 'my_events']);
+    Route::get('/active-event', [EventSeekerController::class, 'my_active_events']);
+    Route::get('/post-event', [EventSeekerController::class, 'create']);
+    Route::post('/post-event', [EventSeekerController::class, 'store']);
+    Route::get('/delete/{event_id}', [EventSeekerController::class, 'destroy']);
 });
 
 
@@ -47,6 +51,7 @@ Route::group(['prefix'=>'event_worker'],function(){
     // Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
 });
 
+<<<<<<< HEAD
 
 
 
@@ -57,14 +62,19 @@ Route::group(['prefix'=>'event_worker'],function(){
 Route::get('/post_event', function () {
     return view('event-seeker.post-an-event');
 });
+=======
+// Route::get('/post_event', function () {
+//     return view('event-seeker.post-an-event');
+// });
+>>>>>>> 8b9dab37e5316dcc16ebd3806484aa6e2cccbcf3
 
 // Route::get('/posted_event', function () {
 //     return view('event-seeker.my-post-event');
 // });
 
-Route::get('/active_event', function () {
-    return view('event-seeker.my-active-event');
-});
+// Route::get('/active_event', function () {
+//     return view('event-seeker.my-active-event');
+// });
 Route::get('/my_bid', function () {
     return view('event-seeker.bid');
 });
@@ -100,6 +110,6 @@ Route::get('/get_paid', function () {
     return view('event-worker\payment\getpaid');
 });
 
-Route::get('/register', [AuthController::class,'register']);
-Route::post('/login', [AuthController::class,'login']);
-Route::get('/logout', [AuthController::class,'logout']);
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout']);
