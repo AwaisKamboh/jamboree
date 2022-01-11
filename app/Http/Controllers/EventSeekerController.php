@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Hired;
+use App\Models\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -28,6 +29,19 @@ class EventSeekerController extends Controller
         $events_active = Hired::whereIn('event_id', $events_ids)->with('event')->with('proposal')->with('proposal.user')->get();
         return view('event-seeker.my-active-event')->with('events_active', $events_active);
     }
+
+    public function proposals()
+    {
+        $auth = Auth::user();
+        $events = $auth->events;
+        $events_ids = [];
+        foreach ($events as $event) {
+            $events_ids[] = $event->id;
+        }
+        $events_proposals = Proposal::whereIn('event_id', $events_ids)->with('events')->with('user')->get();
+        return view('event-seeker.proposals')->with('events_proposals', $events_proposals);
+    }
+
 
     public function create()
     {

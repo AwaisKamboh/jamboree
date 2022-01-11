@@ -58,12 +58,12 @@ class User extends Authenticatable
 
     public function proposal()
     {
-        return $this->hasOne(Portfolio::class, 'user_id', 'id');
+        return $this->hasOne(Proposal::class, 'user_id', 'id');
     }
 
     public function proposals()
     {
-        return $this->hasMany(Portfolio::class, 'user_id', 'id');
+        return $this->hasMany(Proposal::class, 'user_id', 'id');
     }
     
 }

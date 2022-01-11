@@ -61,7 +61,7 @@
                             <ul class="submenu">
                                 <li><a href="/event-seeker/posted-event">My Posted Events</a></li>
                                 <li><a href="/event-seeker/active-event">My Active Events</a></li>
-                                 <li><a href="/my_bid">Bids On My Events</a></li>
+                                 <li><a href="/event-seeker/proposals">Bids On My Events</a></li>
                              
                             </ul>
                         </li>

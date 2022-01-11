@@ -6,6 +6,7 @@
    @section('content')
   @include('includes.header')  
     <!-- Start home -->
+    {{-- {{dd($events_proposals)}} --}}
     <section class="bg-half page-next-level" style="background: url('/assets/images/bidding.jpeg') center center;"> 
         <div class="bg-overlay"></div>
         <div class="container">
@@ -35,23 +36,8 @@
                     </div>
                 </div>
             </div>
-           {{-- <?php
-                                                        include"connection.php";
-                                                        $user=implode($_SESSION["User"]);
-                                                        $email=$_SESSION["email"];
-                                                        $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email`='$email'") or die("Error: " . mysqli_error($conn));                        
-                                                        $row=mysqli_fetch_array($query); 
-                                                        $id=$row["id"];
-                                                        $sql= "SELECT * FROM `proposal` WHERE `p_u_id`='$id'";
-                                                        
-                                                        $result=mysqli_query($conn,$sql);
-
-                                                        if ($result->num_rows > 0) {
-                                                        
-                                                        while($rows=mysqli_fetch_array($result))
-                                                        { $id=$rows['id'];
-                                                         
-                                                  echo'
+          
+         @foreach($events_proposals as $events_proposal)                                    
             <div class="row">
                 <div class="col-12">
                     <div class="tab-content mt-2" id="pills-tabContent">
@@ -74,16 +60,14 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">Bid by: ';
-                                                                                                                 echo  ucwords($rows['pro_u_name']);
-                                                                                                                       echo '</a></h5>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">Bid by: {{$events_proposal->user->name}}</a></h5>
                                                        
                                                     </div>
                                                 </div>
                                                
                                                 <div class="col-md-4">
                                                     <div>
-                                                        <h6 >Offer <span class="text-primary">Rs</span>'; echo $rows['bid']; echo '</h6>
+                                                        <h6 >Offer <span class="text-primary">Rs</span>{{$events_proposal->bid}}</h6>
                                                     </div>
                                                 </div>
                                                <div class="row">
@@ -91,9 +75,7 @@
                                             <label >Event Title:-</label>
                                         </div>
                                             <div class="form-group app-label mt-2">
-                                            <label class="text-muted">';
-                                                                             echo  ucwords($rows['event_title']);
-                                                                            echo '</label>
+                                            <label class="text-muted">{{$events_proposal->event->title}}</label>
                                         </div>
                                         </div>
                                             </div>
@@ -106,9 +88,7 @@
                                                     
                                                         <h6>Details </h6>
                                                         <hr>
-                                                        <p>';
-                                                                             echo  ucwords($rows['pro_detail']);
-                                                                            echo '</p> 
+                                                        <p>{{$events_proposal->detail}}</p> 
                                                                             <hr>
                                                     </div>
                                                 </div>
@@ -117,20 +97,20 @@
                                             <div class="row justify-content-center ">
                                                 <div class="col-md-4">
                                                     <div>
-                                                       <p>Bid on Date:'; echo $rows['date']." Time:".$rows['time']; ;echo'</p>
+                                                       <p>Bid on Date:{{$events_proposal->created_at->format('Y-m-d')}} Time:{{$events_proposal->created_at->format('H:i:s')}}</p>
                                                     </div>
                                                 </div>
                                                
                                                 <div class="col-md-2">
-                                                    <div>';
-                                                      echo "<a href='chat.php' class='text-primary' name='bid'>Message<i class='mdi mdi-chevron-double-right'></i></a>";
-                                                  echo '  </div>
+                                                    <div>
+                                                     <a href='chat.php' class='text-primary' name='bid'>Message<i class='mdi mdi-chevron-double-right'></i></a>
+                                                   </div>
                                                 </div>
                                                  <div class="col-md-2">
                                                     <div>
-                                                        ';
-                                                  echo "<a href='employeedinner.php?hire_id=$rows[id]' class='text-primary' name='bid'>Hire <i class='mdi mdi-chevron-double-right'></i></a>";
-                                                    echo '
+                                                       
+                                                  <a href='employeedinner.php?hire_id=$rows[id]' class='text-primary' name='bid'>Hire <i class='mdi mdi-chevron-double-right'></i></a>
+                                                   
                                                      </div>
                                                      
                                                 </div>
@@ -148,7 +128,9 @@
                             <!-- end row -->
                         </div>
                     </div>
-                </div>';
+                </div>
+                @endforeach
+               {{-- ';
 
                                                         
 }}//end of if
