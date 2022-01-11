@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventSeekerController;
+use App\Http\Controllers\EventWorkerController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +38,21 @@ Route::group(['prefix'=>'event-seeker'],function(){
 });
 
 
-
-Route::get('/event_worker', function () {
-    return view('event-worker.event-workers-homepage');
+Route::group(['prefix'=>'event_worker'],function(){
+    Route::get('/',[EventWorkerController::class,'show']);
+    Route::get('/apply/{event_id}',[EventWorkerController::class,'apply']);
+    Route::post('/applied',[EventWorkerController::class,'applied']);
+    Route::get('my-proposals',[EventWorkerController::class,'myProposals']);
+    // Route::post('/post-event',[EventSeekerController::class,'store']);
+    // Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
 });
+
+
+
+
+// Route::get('/event_worker', function () {
+//     return view('event-worker.event-workers-homepage');
+// });
 
 Route::get('/post_event', function () {
     return view('event-seeker.post-an-event');
@@ -80,9 +92,9 @@ Route::get('/my_active_orders', function () {
     return view('event-worker.my-active-orders');
 });
 
-Route::get('/my_proposal', function () {
-    return view('event-worker.My-proposal');
-});
+// Route::get('/my_proposal', function () {
+//     return view('event-worker.My-proposal');
+// });
 
 Route::get('/get_paid', function () {
     return view('event-worker\payment\getpaid');

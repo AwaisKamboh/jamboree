@@ -69,6 +69,6 @@ class EventSeekerController extends Controller
     {
         $event = Event::find($event_id);
         $event->delete();
-        return redirect('/event-seeker/posted_event');
+        return redirect('/event-seeker/posted-event');
     }
 }
