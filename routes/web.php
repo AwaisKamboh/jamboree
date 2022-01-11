@@ -51,7 +51,7 @@ Route::group(['prefix'=>'event_worker'],function(){
     // Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
 });
 
-<<<<<<< HEAD
+
 
 
 
@@ -59,14 +59,14 @@ Route::group(['prefix'=>'event_worker'],function(){
 //     return view('event-worker.event-workers-homepage');
 // });
 
-Route::get('/post_event', function () {
-    return view('event-seeker.post-an-event');
-});
-=======
 // Route::get('/post_event', function () {
 //     return view('event-seeker.post-an-event');
 // });
->>>>>>> 8b9dab37e5316dcc16ebd3806484aa6e2cccbcf3
+
+// Route::get('/post_event', function () {
+//     return view('event-seeker.post-an-event');
+// });
+
 
 // Route::get('/posted_event', function () {
 //     return view('event-seeker.my-post-event');
