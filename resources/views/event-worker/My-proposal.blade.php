@@ -5,6 +5,7 @@
 @section('content')
       @include('includes.header-worker')    
     <!-- Start home -->
+   
     <section class="bg-half page-next-level" style="background: url('/assets/images/proposal.jpg') center center;"> 
         <div class="bg-overlay"></div>
         <div class="container">
@@ -34,22 +35,8 @@
                     </div>
                 </div>
             </div>
-           {{-- <?php
-                                                        include"connection.php";
-                                                        $user=implode($_SESSION["User"]);
-                                                        $email=$_SESSION["email"];
-                                                        $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email`='$email'") or die("Error: " . mysqli_error($conn));                        
-                                                        $row=mysqli_fetch_array($query); 
-                                                        $id=$row["id"];
-                                                        $sql= "SELECT * FROM `proposal`  WHERE `pro_u_id`=$id ORDER BY `id` DESC";
-                                                        $result=mysqli_query($conn,$sql);
-
-                                                        if ($result->num_rows > 0) {
-                                                        
-                                                        while($rows=mysqli_fetch_array($result))
-                                                        { $id=$rows['id'];
-
-                                                  echo'
+           @foreach ($proposals as $proposal)
+               
             <div class="row">
                 <div class="col-12">
                     <div class="tab-content mt-2" id="pills-tabContent">
@@ -67,28 +54,24 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-2">
                                                     <div class="mo-mb-2">
-                                                        <img src="images/icons/contract.png" alt="" class="img-fluid mx-auto d-block">
+                                                        <img src="/assets/images/icons/contract.png" alt="" class="img-fluid mx-auto d-block">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">'; echo ucwords($rows['event_title']); echo'</a></h5>
-                                                        <p class="text-muted mb-0">Posted by:';
-                                                                                                                 echo  ucwords($rows['p_u_name']);
-                                                                                                                       echo '</p>
-                                                        <p class="text-muted mb-0">Bid by:';
-                                                                                                                 echo  ucwords($rows['pro_u_name']);
-                                                                                                                       echo '</p>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$proposal->event->title}}</a></h5>
+                                                        <p class="text-muted mb-0">Posted by:{{$proposal->event->user->name}}</p>
+                                                        <p class="text-muted mb-0">Bid by:{{$proposal->user->name}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>'; echo ucwords($rows['location']); echo'</p>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>{{$proposal->event->location}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <p class="text-muted mb-0 mo-mb-2">My Offer <span class="text-primary">Rs</span>'; echo ucwords($rows['bid']); echo'</p>
+                                                        <p class="text-muted mb-0 mo-mb-2">My Offer <span class="text-primary">Rs</span>{{$proposal->bid}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -103,7 +86,7 @@
                                                     
                                                         <h6>Event Discription </h6>
                                                         <hr>
-                                                        <p>'; echo ucwords($rows['ev_descrip']); echo'</p> 
+                                                        <p>{{$proposal->event->description}}</p> 
                                                                             <hr>
                                                     </div>
                                                 </div>
@@ -112,7 +95,7 @@
                                                     
                                                         <h6>My proposal </h6>
                                                         <hr>
-                                                        <p>'; echo ucwords($rows['pro_detail']); echo'</p> 
+                                                        <p>{{$proposal->detail}}</p> 
                                                                             <hr>
                                                     </div>
                                                 </div>
@@ -123,7 +106,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
-                                                        <p class="text-muted mb-0 mo-mb-4"><span class="text-dark">Time & Date :</span> '; echo $rows['date']." time:".$rows['time']; echo'</p>
+                                                        <p class="text-muted mb-0 mo-mb-4"><span class="text-dark"> Date :</span>{{$proposal->created_at->format('Y-m-d')}} Time:{{$proposal->created_at->format('H:i:s')}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -146,7 +129,9 @@
                         </div>
                     </div>
                 </div>
-                ';?> --}}
+           @endforeach
+
+            {{--
                         
 {{-- <?php
 }}//end of if

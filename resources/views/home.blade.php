@@ -81,7 +81,7 @@
                 <ul class="navigation-menu">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/event-seeker">Event Seeker</a></li>
-                    <li><a href="/event_worker">Event Worker</a></li>
+                    <li><a href="/event-worker">Event Worker</a></li>
                     <li class="has-submenu">
                                 <a href="javascript:void(0)">Account</a><span class="menu-arrow"></span>
                             <ul class="submenu">

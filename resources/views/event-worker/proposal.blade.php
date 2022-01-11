@@ -122,7 +122,7 @@
                                 <div class="row">
                                 </div>
                                 <hr>                            
-                                <form method="POST" action="/event_worker/applied" name="contact-form" id="contact-form3">                         
+                                <form method="POST" action="/event-worker/apply" name="contact-form" id="contact-form3">                         
                                     <h4 class="text-dark mb-3">Fill Carefully :</h4>  
                                     @csrf
                                         <div class="row">

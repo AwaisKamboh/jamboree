@@ -34,20 +34,22 @@ Route::get('/login', function () {
 Route::group(['prefix' => 'event-seeker'], function () {
     Route::view('/', 'event-seeker.event-seeker-homepage');
     Route::view('post-event', 'event-seeker.post-an-event');
-    Route::get('/posted-event', [EventSeekerController::class, 'my_events']);
-    Route::get('/active-event', [EventSeekerController::class, 'my_active_events']);
+    Route::get('/posted-event', [EventSeekerController::class, 'myEvents']);
+    Route::get('/active-event', [EventSeekerController::class, 'myActiveEvents']);
     Route::get('/proposals', [EventSeekerController::class, 'proposals']);
+    Route::get('/hire/worker/{event_id}', [EventSeekerController::class, 'hireWorker']);
     Route::get('/post-event', [EventSeekerController::class, 'create']);
     Route::post('/post-event', [EventSeekerController::class, 'store']);
     Route::get('/delete/{event_id}', [EventSeekerController::class, 'destroy']);
 });
 
 
-Route::group(['prefix'=>'event_worker'],function(){
+Route::group(['prefix'=>'event-worker'],function(){
     Route::get('/',[EventWorkerController::class,'show']);
     Route::get('/apply/{event_id}',[EventWorkerController::class,'apply']);
-    Route::post('/applied',[EventWorkerController::class,'applied']);
-    Route::get('my-proposals',[EventWorkerController::class,'myProposals']);
+    Route::post('/apply',[EventWorkerController::class,'applied']);
+    Route::get('/my-proposals',[EventWorkerController::class,'myProposals']);
+    Route::get('/active-orders',[EventWorkerController::class,'activeOrders']);
     // Route::post('/post-event',[EventSeekerController::class,'store']);
     // Route::get('/delete/{event_id}',[EventSeekerController::class,'destroy']);
 });
@@ -56,26 +58,7 @@ Route::group(['prefix'=>'event_worker'],function(){
 
 
 
-// Route::get('/event_worker', function () {
-//     return view('event-worker.event-workers-homepage');
-// });
 
-// Route::get('/post_event', function () {
-//     return view('event-seeker.post-an-event');
-// });
-
-// Route::get('/post_event', function () {
-//     return view('event-seeker.post-an-event');
-// });
-
-
-// Route::get('/posted_event', function () {
-//     return view('event-seeker.my-post-event');
-// });
-
-// Route::get('/active_event', function () {
-//     return view('event-seeker.my-active-event');
-// });
 Route::get('/my_bid', function () {
     return view('event-seeker.bid');
 });
@@ -99,9 +82,9 @@ Route::get('/chat', function () {
 //     return view('bid');
 // });
 
-Route::get('/my_active_orders', function () {
-    return view('event-worker.my-active-orders');
-});
+// Route::get('/my_active_orders', function () {
+//     return view('event-worker.my-active-orders');
+// });
 
 // Route::get('/my_proposal', function () {
 //     return view('event-worker.My-proposal');

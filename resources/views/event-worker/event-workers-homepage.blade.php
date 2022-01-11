@@ -68,7 +68,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-2">
                                                     <div class="mo-mb-2">
-                                                        <img src="images/eventpostlogo.png" alt="" class="img-fluid mx-auto d-block">
+                                                        <img src="/assets/images/eventpostlogo.png" alt="" class="img-fluid mx-auto d-block">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -100,7 +100,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Requirements :</span> {{$event->description}}</p>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Requirements :</span> Will be told separately.</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -113,7 +113,7 @@
                                                  @if(Auth::user()->id == $event->user->id)                 
                                                 <a href='#' class='btn btn-primary disabled'>Apply Now <i class='mdi mdi-chevron-double-right'></i></a>       
                                                  @else                    
-                                                 <a href='/event_worker/apply/{{$event->id}}' class='btn btn-primary '>Apply Now <i class='mdi mdi-chevron-double-right'></i></a> 
+                                                 <a href='/event-worker/apply/{{$event->id}}' class='btn btn-primary '>Apply Now <i class='mdi mdi-chevron-double-right'></i></a> 
                                                  @endauth
                                                     </div>
                                                 </div>

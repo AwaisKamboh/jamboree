@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class EventSeekerController extends Controller
 {
-    public function my_events()
+    public function myEvents()
     {
         $auth = Auth::user();
         $events = Event::where('user_id', $auth->id)->with('user')->get();
         return view('event-seeker.my-post-event')->with('events', $events);
     }
 
-    public function my_active_events()
+    public function myActiveEvents()
     {
         $auth = Auth::user();
         $active_events = $auth->events;
@@ -38,10 +38,34 @@ class EventSeekerController extends Controller
         foreach ($events as $event) {
             $events_ids[] = $event->id;
         }
-        $events_proposals = Proposal::whereIn('event_id', $events_ids)->with('events')->with('user')->get();
+        $events_proposals = Proposal::whereIn('event_id', $events_ids)->with('event')->with('user')->get();
         return view('event-seeker.proposals')->with('events_proposals', $events_proposals);
     }
 
+    public function hireWorker($proposal_id)
+    {
+        $auth = Auth::user();
+        $proposal = Proposal::find($proposal_id);
+        $proposal = $proposal->with('event')->first();
+        $hire = Hired::where('proposal_id', $proposal_id)->where('event_id', $proposal->event->id)->first();
+        if (!$hire) {
+            $hire = new Hired();
+            $hire->proposal_id = $proposal->id;
+            $hire->event_id = $proposal->event->id;
+            $hire->save();
+            if ($hire) {
+                $event = Event::find($hire->event_id);
+                $event->hired = 1;
+                $event->update();
+            }
+            return redirect('event-seeker/active-event');
+        } else {
+            return false;
+        }
+
+
+        // return view('event-seeker.proposals')->with('events_proposals', $events_proposals);
+    }
 
     public function create()
     {
@@ -50,15 +74,6 @@ class EventSeekerController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'event_title' => 'required',
-        //     'event_type' => 'required',
-        //     'city' => 'required',
-        //     'location' => 'required',
-        //     'budgetmin' => 'required|float',
-        //     'budgetmax' => 'required|float',
-        //     'date' => 'required',
-        // ]);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'type' => 'required',

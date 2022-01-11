@@ -58,8 +58,8 @@
                 <li class="has-submenu">
                     <a href="javascript:void(0)">Work Diary</a><span class="menu-arrow"></span>
                     <ul class="submenu">
-                        <li><a href="/my_active_orders">My Active Orders</a></li>
-                        <li><a href="event_worker/my-proposals">My Proposals</a></li>
+                        <li><a href="/event-worker/active-orders">My Active Orders</a></li>
+                        <li><a href="/event-worker/my-proposals">My Proposals</a></li>
                     </ul>
                 </li>
 
