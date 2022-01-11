@@ -36,6 +36,7 @@ Route::group(['prefix' => 'event-seeker'], function () {
     Route::view('post-event', 'event-seeker.post-an-event');
     Route::get('/posted-event', [EventSeekerController::class, 'my_events']);
     Route::get('/active-event', [EventSeekerController::class, 'my_active_events']);
+    Route::get('/proposals', [EventSeekerController::class, 'proposals']);
     Route::get('/post-event', [EventSeekerController::class, 'create']);
     Route::post('/post-event', [EventSeekerController::class, 'store']);
     Route::get('/delete/{event_id}', [EventSeekerController::class, 'destroy']);
